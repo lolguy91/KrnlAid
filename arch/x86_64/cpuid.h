@@ -378,8 +378,26 @@ enum leaves {
     */
    CPUID_MS_HYPERV_NESTED_OPTIMISATIONS = 0x4000000A,
    CPUID_EXTENDED_SIGNATURE = 0x800000001,
+   /* @ Full CPU name
+    * @ Returned EAX: First 4 characters of the full CPU name
+    * @ Returned EBX: Second 4 characters of the full CPU name
+    * @ Returned ECX: Third 4 characters of the full CPU name
+    * @ Retruned EDX: Fourth 4 characters of the full CPU name
+    */
    CPUID_BRAND_STRING1 = 0x800000002,
+   /* @ Full CPU name 2
+    * @ Returned EAX: Fifth 4 characters of the full CPU name
+    * @ Returned EBX: Sexth 4 characters of the full CPU name
+    * @ Returned ECX: Seventh 4 characters of the full CPU name
+    * @ Retruned EDX: Eightth 4 characters of the full CPU name
+    */
    CPUID_BRAND_STRING2 = 0x800000003,
+   /* @ Full CPU name 3
+    * @ Returned EAX: Nineth 4 characters of the full CPU name
+    * @ Returned EBX: Tenth 4 characters of the full CPU name
+    * @ Returned ECX: Eleventh 4 characters of the full CPU name
+    * @ Retruned EDX: Twelveth 4 characters of the full CPU name
+    */
    CPUID_BRAND_STRING3 = 0x800000004,
    CPUID_MORE_CACHE = 0x800000006,
    CPUID_INVARIANT_TSC_AVAILABLE = 0x800000007,
