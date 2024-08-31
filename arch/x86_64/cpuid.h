@@ -239,6 +239,9 @@
 #define CPUID_MONITOR_MWAIT_EDX_C6_SUBC_STATES 0xF << 24
 #define CPUID_MONITOR_MWAIT_EDX_C7_SUBC_STATES 0xF << 28
 
+
+
+
 enum leaves {
    /* @ Basic CPU info
     * @ Returned EAX: Highest basic CPUID leaf present
@@ -284,9 +287,9 @@ enum leaves {
    CPUID_MONITOR_MWAIT = 0x00000005,
    /* @ MONITOR/MWAIT params
     * @ Returned EAX: Smallest monitor-line size
-    * @ Returned EBX: Largest monitor-line size
-    * @ Returned ECX: Enumeration of Monitor-Mwait extensions,Supports treating interrupts as break-event for MWAIT
-    * @ Retruned EDX: Number of sub C-states supported using MWAIT for each C number thingy IDK
+    * @ Returned EBX: First 4 letters of the hypervisor vendor identifier string
+    * @ Returned ECX: Third 4 letters of the hypervisor vendor identifier string
+    * @ Retruned EDX: Second 4 letters of the hypervisor vendor identifier string
     */
    CPUID_THERMAL_AND_POWER = 0x00000006,
    CPUID_EXTENDED_FEATURES = 0x00000007,
@@ -310,14 +313,69 @@ enum leaves {
    CPUID_TMUL_INFO = 0x00000001E,
    CPUID_V2_EXTENDED_TOPOLOGY = 0x00000001F,
    CPUID_V2_EXTENDED_TOPOLOGY2 = 0x000000020,
-   CPUID_MS_HYPERV_IDENT = 0x40000000,
+   //TODO: add the bitmasks for these Microsoft ones
+   /* @ Hypervisor CPUID Leaf Range
+    * @ Returned EAX: Highest hypervisor CPUID leaf present
+    * @ Returned EBX: Largest monitor-line size
+    * @ Returned ECX: Enumeration of Monitor-Mwait extensions,Supports treating interrupts as break-event for MWAIT
+    * @ Retruned EDX: Number of sub C-states supported using MWAIT for each C number thingy IDK
+    */
+   CPUID_HYPERV_IDENT = 0x40000000,
+   /* @ Hypervisor Vendor-Neutral Interface Identification
+    * @ Returned EAX: Hypervisor interface signature
+    * @ Returned EBX: Reserved
+    * @ Returned ECX: Reserved
+    * @ Retruned EDX: Reserved
+    */
    CPUID_MS_HYPERV_INTERFCE_IDENT = 0x40000001,
+   /* @ Hypervisor System Identity
+    * @ Returned EAX: Build number
+    * @ Returned EBX: Major and minor version
+    * @ Returned ECX: Reserved
+    * @ Retruned EDX: Reserved
+    */
    CPUID_MS_HYPERV_SYSTEM_IDENT = 0x40000002,
+   /* @ Hypervisor Feature Identification
+    * @ Returned EAX: bits 0-31 of HV_PARTITION_PRIVILEGE_MASK
+    * @ Returned EBX: bits 31-63 of HV_PARTITION_PRIVILEGE_MASK
+    * @ Returned ECX: Hyper-V features
+    * @ Retruned EDX: Hyper-V features
+    */
    CPUID_MS_HYPERV_FEATURE_IDENT = 0x40000003,
+   /* @ Implementation Recommendations
+    * @ Returned EAX: Hyper-V feature recommendations
+    * @ Returned EBX: Hyper-V feature recommendations
+    * @ Returned ECX: Hyper-V feature recommendations
+    * @ Retruned EDX: Reserved
+    */
    CPUID_MS_HYPERV_RECOMMENDATIONS = 0x40000004,
+   /* @ Hypervisor Implementation Limits
+    * @ Returned EAX: The maximum number of virtual processors supported
+    * @ Returned EBX: The maximum number of logical processors supported
+    * @ Returned ECX: The maximum number of physical interrupt vectors available for interrupt remapping.
+    * @ Retruned EDX: Reserved
+    */
    CPUID_MS_HYPERV_IMPL_LIMITS = 0x40000005,
+   /* @ Implementation Hardware Features
+    * @ Returned EAX: Hardware features
+    * @ Returned EBX: Reserved
+    * @ Returned ECX: Reserved
+    * @ Retruned EDX: Reserved
+    */
    CPUID_MS_HYPERV_HARDWARE_FEATURES = 0x40000006,
+   /* @ Nested Hypervisor Feature Identification
+    * @ Returned EAX: Nested Hypervisor features
+    * @ Returned EBX: Reserved
+    * @ Returned ECX: Reserved
+    * @ Retruned EDX: Nested Hypervisor features
+    */
    CPUID_MS_HYPERV_NESTED_FEATURES = 0x40000009,
+   /* @ Nested Hypervisor Nested Virtualization Features
+    * @ Returned EAX: Nested Hypervisor features
+    * @ Returned EBX: Nested Hypervisor features
+    * @ Returned ECX: Reserved
+    * @ Retruned EDX: Reserved
+    */
    CPUID_MS_HYPERV_NESTED_OPTIMISATIONS = 0x4000000A,
    CPUID_EXTENDED_SIGNATURE = 0x800000001,
    CPUID_BRAND_STRING1 = 0x800000002,
