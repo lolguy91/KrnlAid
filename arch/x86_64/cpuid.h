@@ -230,14 +230,51 @@
 #define CPUID_MONITOR_MWAIT_ECX_ENUM_EXTENSIONS       1
 #define CPUID_MONITOR_MWAIT_ECX_BREAK_EVENTS          1 << 1
 
-#define CPUID_MONITOR_MWAIT_EDX_C0_SUBC_STATES 0xF
-#define CPUID_MONITOR_MWAIT_EDX_C1_SUBC_STATES 0xF << 4
-#define CPUID_MONITOR_MWAIT_EDX_C2_SUBC_STATES 0xF << 8
-#define CPUID_MONITOR_MWAIT_EDX_C3_SUBC_STATES 0xF << 12
-#define CPUID_MONITOR_MWAIT_EDX_C4_SUBC_STATES 0xF << 16
-#define CPUID_MONITOR_MWAIT_EDX_C5_SUBC_STATES 0xF << 20
-#define CPUID_MONITOR_MWAIT_EDX_C6_SUBC_STATES 0xF << 24
-#define CPUID_MONITOR_MWAIT_EDX_C7_SUBC_STATES 0xF << 28
+#define CPUID_MONITOR_MWAIT_EDX_C0_SUBC_STATES        0xF
+#define CPUID_MONITOR_MWAIT_EDX_C1_SUBC_STATES        0xF << 4
+#define CPUID_MONITOR_MWAIT_EDX_C2_SUBC_STATES        0xF << 8
+#define CPUID_MONITOR_MWAIT_EDX_C3_SUBC_STATES        0xF << 12
+#define CPUID_MONITOR_MWAIT_EDX_C4_SUBC_STATES        0xF << 16
+#define CPUID_MONITOR_MWAIT_EDX_C5_SUBC_STATES        0xF << 20
+#define CPUID_MONITOR_MWAIT_EDX_C6_SUBC_STATES        0xF << 24
+#define CPUID_MONITOR_MWAIT_EDX_C7_SUBC_STATES        0xF << 28
+
+//===========CPUID_THERMAL_AND_POWER===========
+#define CPUID_THERMAL_AND_POWER_EAX_TEMP_SENSOR       1
+#define CPUID_THERMAL_AND_POWER_EAX_TURBO_BOOST       1 << 1
+#define CPUID_THERMAL_AND_POWER_EAX_ARAT              1 << 2
+//Bit 3 is reserved
+#define CPUID_THERMAL_AND_POWER_EAX_PLN               1 << 3
+#define CPUID_THERMAL_AND_POWER_EAX_ECMD              1 << 5
+#define CPUID_THERMAL_AND_POWER_EAX_PTM               1 << 6
+#define CPUID_THERMAL_AND_POWER_EAX_HWP               1 << 7
+#define CPUID_THERMAL_AND_POWER_EAX_HWP_NOTIFICATION  1 << 8
+#define CPUID_THERMAL_AND_POWER_EAX_HWP_ACT_WINDOW    1 << 9
+#define CPUID_THERMAL_AND_POWER_EAX_HWP_PERF_PREF     1 << 10
+#define CPUID_THERMAL_AND_POWER_EAX_HWP_PKG_LVL_REQ   1 << 11
+//Bit 12 is reserved
+#define CPUID_THERMAL_AND_POWER_EAX_HDC               1 << 13
+#define CPUID_THERMAL_AND_POWER_EAX_TURBO_BOOST_MAX   1 << 14
+#define CPUID_THERMAL_AND_POWER_EAX_HWP_CAPABILITIES  1 << 15
+#define CPUID_THERMAL_AND_POWER_EAX_HWP_PECI          1 << 16
+#define CPUID_THERMAL_AND_POWER_EAX_FLEXIBLE_HWP      1 << 17
+#define CPUID_THERMAL_AND_POWER_EAX_FAST_HWP_REQUEST  1 << 18
+#define CPUID_THERMAL_AND_POWER_EAX_HW_FEEDBACK       1 << 19
+#define CPUID_THERMAL_AND_POWER_EAX_IGNORE_HWP_IDLE   1 << 20
+//Bits 21 and 22 are reserved
+#define CPUID_THERMAL_AND_POWER_EAX_THREAD_DIRECTOR   1 << 23
+#define CPUID_THERMAL_AND_POWER_EAX_THERM_INTERRUPT   1 << 24
+
+#define CPUID_THERMAL_AND_POWER_EBX_INT_TRESHOLD      0xf
+
+#define CPUID_THERMAL_AND_POWER_ECX_HW_COORD_FEEDBACK 1
+#define CPUID_THERMAL_AND_POWER_ECX_ENERGY_PERF_BIAS  1 << 3
+#define CPUID_THERMAL_AND_POWER_ECX_TD_CLASSES        0xff << 8
+
+#define CPUID_THERMAL_AND_POWER_EDX_PERF_REPORT       1
+#define CPUID_THERMAL_AND_POWER_EDX_EFFICIENCY_REPORT 1      << 1
+#define CPUID_THERMAL_AND_POWER_EDX_HW_FEEDBACK_SIZE  0xf    << 8
+#define CPUID_THERMAL_AND_POWER_EDX_THIS_PROC_HW_FB   0xffff << 16
 
 
 
@@ -285,11 +322,11 @@ enum leaves {
     * @ Retruned EDX: Number of sub C-states supported using MWAIT for each C number thingy IDK
     */
    CPUID_MONITOR_MWAIT = 0x00000005,
-   /* @ MONITOR/MWAIT params
-    * @ Returned EAX: Smallest monitor-line size
-    * @ Returned EBX: First 4 letters of the hypervisor vendor identifier string
-    * @ Returned ECX: Third 4 letters of the hypervisor vendor identifier string
-    * @ Retruned EDX: Second 4 letters of the hypervisor vendor identifier string
+   /* @ Thermal and power managment
+    * @ Returned EAX: Thermal and power info
+    * @ Returned EBX: Thermal and power info
+    * @ Returned ECX: Thermal and power info
+    * @ Retruned EDX: Thermal and power info
     */
    CPUID_THERMAL_AND_POWER = 0x00000006,
    CPUID_EXTENDED_FEATURES = 0x00000007,
