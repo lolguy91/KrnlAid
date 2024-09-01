@@ -377,6 +377,12 @@ enum leaves {
     * @ Retruned EDX: Reserved
     */
    CPUID_MS_HYPERV_NESTED_OPTIMISATIONS = 0x4000000A,
+   /* @ Extended processor signature
+    * @ Returned EAX: Reserved
+    * @ Returned EBX: Reserved
+    * @ Returned ECX: Extended feature bits(cant find docs for them sowwy)
+    * @ Retruned EDX: Extended feature bits(cant find docs for them sowwy)
+    */
    CPUID_EXTENDED_SIGNATURE = 0x800000001,
    /* @ Full CPU name
     * @ Returned EAX: First 4 characters of the full CPU name
@@ -399,8 +405,26 @@ enum leaves {
     * @ Retruned EDX: Twelveth 4 characters of the full CPU name
     */
    CPUID_BRAND_STRING3 = 0x800000004,
+   /* @ Cache line size and associativity
+    * @ Returned EAX: Reserved
+    * @ Returned EBX: Reserved
+    * @ Returned ECX: Bits 0-7 = Cache line size in bytes, Bits 12-15 = L2 Associativity, Bits 16-31 = Cache size in 1K blocks
+    * @ Retruned EDX: Reserved
+    */
    CPUID_MORE_CACHE = 0x800000006,
+   /* @ Invariant TSC available
+    * @ Returned EAX: Reserved
+    * @ Returned EBX: Reserved
+    * @ Returned ECX: Bit 8 = Invariant TSC available
+    * @ Retruned EDX: Reserved
+    */
    CPUID_INVARIANT_TSC_AVAILABLE = 0x800000007,
+   /* @ Physical adress size
+    * @ Returned EAX: Bits 0-7 =  Physical Adress bits, Bits 8-15 = Linear Address bits
+    * @ Returned EBX: Bit 9 = WBNOINVD available
+    * @ Returned ECX: Reserved
+    * @ Retruned EDX: Reserved
+    */
    CPUID_PHYS_ADDR_SIZE = 0x800000008,
 };
 
