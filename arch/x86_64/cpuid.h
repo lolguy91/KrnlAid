@@ -329,6 +329,12 @@ enum leaves {
     * @ Retruned EDX: Thermal and power info
     */
    CPUID_THERMAL_AND_POWER = 0x00000006,
+   /* @ Extended features
+    * @ Returned EAX: Number of subleaves supported
+    * @ Returned EBX: Features
+    * @ Returned ECX: Features
+    * @ Retruned EDX: Features
+    */
    CPUID_EXTENDED_FEATURES = 0x00000007,
    CPUID_CACHE_ACCESS_INFO = 0x00000009,
    CPUID_PERFORMANCE_MONITORING = 0x0000000A,
@@ -463,6 +469,11 @@ enum leaves {
     * @ Retruned EDX: Reserved
     */
    CPUID_PHYS_ADDR_SIZE = 0x800000008,
+};
+
+enum sub_leaves{
+    CPUID_EXTENDED_FEATURES_SL1 = 0x00000001,
+    CPUID_EXTENDED_FEATURES_SL2 = 0x00000001
 };
 
 static inline void cpuid(int leaf, int subleaf, int* a, int* b, int* c, int* d) {
