@@ -275,6 +275,7 @@
 #define CPUID_THERMAL_AND_POWER_EDX_EFFICIENCY_REPORT 1      << 1
 #define CPUID_THERMAL_AND_POWER_EDX_HW_FEEDBACK_SIZE  0xf    << 8
 #define CPUID_THERMAL_AND_POWER_EDX_THIS_PROC_HW_FB   0xffff << 16
+
 //===========CPUID_EXTENDED_FEATURES===========
 #define CPUID_EXTENDED_FEATURES_EBX_FSGSBASE          1 
 #define CPUID_EXTENDED_FEATURES_EBX_TSC_ADJUST        1 << 1
@@ -369,6 +370,33 @@
 #define CPUID_EXTENDED_FEATURES_EDX_ARCH_CAPABS_MSR   1 << 29
 #define CPUID_EXTENDED_FEATURES_EDX_CORE_CAPABS_MSR   1 << 30
 #define CPUID_EXTENDED_FEATURES_EDX_SSBD              1 << 31
+
+//=========CPUID_EXTENDED_FEATURES_SL1=========
+//bits 0-3 are reserved
+#define CPUID_EXTENDED_FEATURES_SL1_EAX_AVX_VNNI     1 << 4
+#define CPUID_EXTENDED_FEATURES_SL1_EAX_AVX512_BF16  1 << 5
+//bits 6-9 are reserved 
+#define CPUID_EXTENDED_FEATURES_SL1_EAX_0_REP_MOVSB  1 << 10
+#define CPUID_EXTENDED_FEATURES_SL1_EAX_FAST_STOSB   1 << 11
+#define CPUID_EXTENDED_FEATURES_SL1_EAX_FAST_CMPSB   1 << 12
+//bits 13-21 are reserved
+#define CPUID_EXTENDED_FEATURES_SL1_EAX_HRESET       1 << 22
+//bits 23-19 are reserved
+#define CPUID_EXTENDED_FEATURES_SL1_EAX_INVD_POSTPOST 1 << 30
+//bit 31 is reserved
+
+#define CPUID_EXTENDED_FEATURES_SL1_EBX_PPIN         1
+
+#define CPUID_EXTENDED_FEATURES_SL1_EDX_CET_SSS      1 << 18
+
+//=========CPUID_EXTENDED_FEATURES_SL2=========
+#define CPUID_EXTENDED_FEATURES_SL2_EDX_PSFD         1
+#define CPUID_EXTENDED_FEATURES_SL2_EDX_IPRED_CTRL   1 << 1
+#define CPUID_EXTENDED_FEATURES_SL2_EDX_RRSBA_CTRL   1 << 2
+#define CPUID_EXTENDED_FEATURES_SL2_EDX_DDPD_U       1 << 3
+#define CPUID_EXTENDED_FEATURES_SL2_EDX_BHI_CTRL     1 << 4
+//The rest of the bits are reserved
+
 
 enum leaves {
    /* @ Basic CPU info
@@ -565,9 +593,9 @@ enum leaves {
 enum sub_leaves{
    /* @ Extended features available subleaf 1 !!! All fields return 0 is info not available !!!
     * @ Returned EAX: Features
-    * @ Returned EBX: Features
+    * @ Returned EBX: PPIN
     * @ Returned ECX: Reserved
-    * @ Retruned EDX: Features
+    * @ Retruned EDX: CET_SSS
     */
     CPUID_EXTENDED_FEATURES_SL1 = 0x00000001,
    /* @ Extended features available subleaf 2 !!! All fields return 0 is info not available !!!
