@@ -455,6 +455,12 @@ enum leaves {
     * @ Retruned EDX: Features
     */
    CPUID_EXTENDED_FEATURES = 0x00000007,
+   /* @ Direct Cache Access Information
+    * @ Returned EAX: Value of the MSR "IA32_PLATFORM_DCA_CAP"
+    * @ Returned EBX: Reserved
+    * @ Returned ECX: Reserved
+    * @ Retruned EDX: Reserved
+    */
    CPUID_CACHE_ACCESS_INFO = 0x00000009,
    CPUID_PERFORMANCE_MONITORING = 0x0000000A,
    CPUID_EXTENDENDED_TOPOLOGY = 0x0000000B,
@@ -542,8 +548,8 @@ enum leaves {
    /* @ Extended processor signature
     * @ Returned EAX: Reserved
     * @ Returned EBX: Reserved
-    * @ Returned ECX: Extended feature bits(cant find docs for them sowwy)
-    * @ Retruned EDX: Extended feature bits(cant find docs for them sowwy)
+    * @ Returned ECX: Extended feature bits
+    * @ Retruned EDX: Extended feature bits
     */
    CPUID_EXTENDED_SIGNATURE = 0x800000001,
    /* @ Full CPU name
