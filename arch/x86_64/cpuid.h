@@ -576,7 +576,7 @@ enum sub_leaves{
     * @ Returned ECX: Reserved
     * @ Retruned EDX: Features
     */
-    CPUID_EXTENDED_FEATURES_SL2 = 0x00000001
+    CPUID_EXTENDED_FEATURES_SL2 = 0x00000002,
 };
 
 static inline void cpuid(int leaf, int subleaf, int* a, int* b, int* c, int* d) {
