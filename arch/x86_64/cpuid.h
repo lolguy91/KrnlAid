@@ -370,10 +370,6 @@
 #define CPUID_EXTENDED_FEATURES_EDX_CORE_CAPABS_MSR   1 << 30
 #define CPUID_EXTENDED_FEATURES_EDX_SSBD              1 << 31
 
-
-
-
-
 enum leaves {
    /* @ Basic CPU info
     * @ Returned EAX: Highest basic CPUID leaf present
@@ -567,7 +563,19 @@ enum leaves {
 };
 
 enum sub_leaves{
+   /* @ Extended features available subleaf 1 !!! All fields return 0 is info not available !!!
+    * @ Returned EAX: Features
+    * @ Returned EBX: Features
+    * @ Returned ECX: Reserved
+    * @ Retruned EDX: Features
+    */
     CPUID_EXTENDED_FEATURES_SL1 = 0x00000001,
+   /* @ Extended features available subleaf 2 !!! All fields return 0 is info not available !!!
+    * @ Returned EAX: Reserved
+    * @ Returned EBX: Reserved
+    * @ Returned ECX: Reserved
+    * @ Retruned EDX: Features
+    */
     CPUID_EXTENDED_FEATURES_SL2 = 0x00000001
 };
 
