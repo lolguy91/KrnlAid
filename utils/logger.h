@@ -22,25 +22,25 @@
 #endif
 
 static char* krnlaid_log_log_levels[] = {
-    "TRACE",
-    "DEBUG",
+    "TRAC",
+    "DBG=",
     "WARN",
-    "ERROR",
+    "ERR=",
 };
 
-#define __krnlaid_log_log(level,fmt,...) __kprintf("[%s] " __FUNCTION__ ":" fmt, krnlaid_log_log_levels[level],##__VA_ARGS__)
+#define __krnlaid_log(level,fmt,...) __kprintf("[%s] [%s:%d]:" fmt, krnlaid_log_log_levels[level],__FILE__,__LINE__,##__VA_ARGS__)
 
-#define __krnlaid_log_assert(cond,fmt,...) \
+#define __krnlaid_assert(cond,fmt,...) \
     if(!(cond)){ \
-        __kprintf("Assert failed: \"" fmt "\" at " __FILE__ ":%d \n",__LINE__); \
+        __kprintf("Assert failed: \"" fmt "\" at " __FILE__ ":%d \n",##__VA_ARGS__,__LINE__); \
         __kcease(); \
     }
 
-#define log_trace(fmt, ...) __krnlaid_log_log(KRNLAID_LOG_TRACE, fmt, ##__VA_ARGS__)
-#define log_debug(fmt, ...) __krnlaid_log_log(KRNLAID_LOG_DEBUG, fmt, ##__VA_ARGS__)
-#define log_warn(fmt, ...)  __krnlaid_log_log(KRNLAID_LOG_WARN,  fmt, ##__VA_ARGS__)
-#define log_error(fmt, ...) __krnlaid_log_log(KRNLAID_LOG_ERROR, fmt, ##__VA_ARGS__)
+#define log_trace(fmt, ...) __krnlaid_log(KRNLAID_LOG_TRACE, fmt, ##__VA_ARGS__)
+#define log_debug(fmt, ...) __krnlaid_log(KRNLAID_LOG_DEBUG, fmt, ##__VA_ARGS__)
+#define log_warn(fmt, ...)  __krnlaid_log(KRNLAID_LOG_WARN,  fmt, ##__VA_ARGS__)
+#define log_error(fmt, ...) __krnlaid_log(KRNLAID_LOG_ERROR, fmt, ##__VA_ARGS__)
 
-#define assert(cond,fmt,...) __krnlaid_log_assert(cond,fmt,##__VA_ARGS__)
+#define assert(cond,fmt,...) __krnlaid_assert(cond,fmt,##__VA_ARGS__)
 
 #endif // __KRNLAID_LOG_H__
