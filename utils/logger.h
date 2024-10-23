@@ -2,7 +2,7 @@
 
 //How to use:
 //1, create an wrapper file file
-//2, define __krnlaid_log_printf(const char *fmt, ...) and __krnlaid_log_cease()
+//2, define __kprintf(const char *fmt, ...) and __kcease()
 //3, include utils/logger.h
 //4, now you can use this wrapper in any file
 
